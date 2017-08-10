@@ -1,15 +1,14 @@
-const mongoose = require('mongoose');
 const User = require('../models/user');
 
-mongoose.connect('mongodb://localhost/users');
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(){
-  console.log('Connection to users DB ok!');
-});
-
-const findUserById = (id) => {
-  return User.find({ username: id });
+const save = (user) => {
+  return new User(user).save();
 };
 
-module.exports = { findUserById };
+const findUserById = (id) => {
+  return User.find({ _id: id });
+};
+
+const getAllUsers = () => {
+  return User.find()
+};
+module.exports = { findUserById, save, getAllUsers };

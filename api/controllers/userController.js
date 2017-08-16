@@ -13,10 +13,9 @@ const createUser = (req, res) => {
 };
 
 const getAllUsers = (req, res) => {
-  User.find({}, (err, users) => {
-    if (err) return res.status(500).send("Error fetching users to database");
-    res.status(200).send(users);
-  });
+  return userService.getAllUsers()
+    .then(users => res.send(users))
+    .catch(err => res.send('Error fetching users: ' + err));
 };
 
 module.exports = { createUser, getAllUsers };

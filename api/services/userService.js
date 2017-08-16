@@ -9,6 +9,6 @@ const findUserById = (id) => {
 };
 
 const getAllUsers = () => {
-  return User.find()
+  return User.find();
 };
 module.exports = { findUserById, save, getAllUsers };

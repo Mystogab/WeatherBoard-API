@@ -1,14 +1,16 @@
 const User = require('../models/user');
 
-const save = (user) => {
+const service = {};
+
+service.save = (user) => {
   return new User(user).save();
 };
 
-const findUserById = (id) => {
+service.findUserById = (id) => {
   return User.find({ _id: id });
 };
 
-const getAllUsers = () => {
+service.getAllUsers = () => {
   return User.find();
 };
-module.exports = { findUserById, save, getAllUsers };
+module.exports = service;

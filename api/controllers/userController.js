@@ -1,7 +1,9 @@
 const User = require('../models/user');
 const userService = require('../services/userService');
 
-const createUser = (req, res) => {
+const controller = {};
+
+controller.createUser = (req, res) => {
   const user = {
     username: req.body.username,
     password: req.body.password
@@ -12,10 +14,10 @@ const createUser = (req, res) => {
     .catch(err => res.send('Error saving user: ' + err));
 };
 
-const getAllUsers = (req, res) => {
+controller.getAllUsers = (req, res) => {
   return userService.getAllUsers()
     .then(users => res.send(users))
     .catch(err => res.send('Error fetching users: ' + err));
 };
 
-module.exports = { createUser, getAllUsers };
+module.exports = controller;

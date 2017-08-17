@@ -6,8 +6,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 
 //routes
-router.post('/', userController.createUser);
-router.get('/', userController.getAllUsers);
+router.post('/signup', userController.createUser);
+router.get('/login', userController.login);
 
 
 //export
